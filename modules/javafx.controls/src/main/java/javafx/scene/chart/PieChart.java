@@ -25,18 +25,17 @@
 
 package javafx.scene.chart;
 
-import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import com.sun.javafx.charts.Legend;
+import com.sun.javafx.charts.Legend.LegendItem;
+import com.sun.javafx.collections.NonIterableChange;
+import com.sun.javafx.scene.control.skin.resources.ControlResources;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.beans.NamedArg;
 import javafx.beans.binding.StringBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
@@ -75,10 +74,13 @@ import javafx.scene.shape.Path;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Scale;
 import javafx.util.Duration;
-import com.sun.javafx.charts.Legend;
-import com.sun.javafx.charts.Legend.LegendItem;
-import com.sun.javafx.collections.NonIterableChange;
-import com.sun.javafx.scene.control.skin.resources.ControlResources;
+
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Displays a PieChart. The chart content is populated by pie slices based on
@@ -994,7 +996,7 @@ public class PieChart extends Chart {
          * @param name  name for Pie
          * @param value pie value
          */
-        public Data(String name, double value) {
+        public Data(@NamedArg("name") String name, @NamedArg("pieValue") double value) {
             setName(name);
             setPieValue(value);
             textNode.getStyleClass().addAll("text", "chart-pie-label");
